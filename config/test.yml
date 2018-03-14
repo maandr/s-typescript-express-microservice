@@ -1,2 +1,4 @@
 express:
   port: 9909
+logging:
+  level: "WARN"

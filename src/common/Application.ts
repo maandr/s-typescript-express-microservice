@@ -1,5 +1,5 @@
 import { ExpressConfig } from "./Express"
-import { logger } from "./Logger"
+import { logger } from "./logging/Logger"
 import * as config from "config"
 
 export class Application {

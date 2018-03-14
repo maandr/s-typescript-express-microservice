@@ -1,9 +1,9 @@
-import { AbstractControllerTest } from "./AbstractControllerTest"
+import { AbstractControllerIntegrationTest } from "./AbstractControllerIntegrationTest"
 import { suite, test } from "mocha-typescript"
 import { expect } from "chai"
 
 @suite("HealthController")
-class HealthControllerTest extends AbstractControllerTest {
+class HealthControllerIntegrationTest extends AbstractControllerIntegrationTest {
 
     @test("GET /api/health")
     should_response_ok() {

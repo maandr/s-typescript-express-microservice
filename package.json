@@ -23,7 +23,7 @@
     "test:coverage": "cross-env NODE_ENV=test nyc --reporter=text npx mocha",
     "publish-coverage": "nyc report --reporter=text-lcov | coveralls",
     "docker-build": "./scripts/docker-build.sh",
-    "docker-up": "./scripts/docker-run.sh -d -p 3000:3000",
+    "docker-up": "./scripts/docker-run.sh -d -p 9001:9001",
     "docker-down": "./scripts/docker-remove.sh -fv",
     "docker-push": "./scripts/docker-push.sh"
   },

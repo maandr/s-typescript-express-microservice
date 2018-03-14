@@ -3,4 +3,4 @@ node_js:
   - "stable"
 
 after_script:
-  - "npm run coverage"
+  - "npm run publish-coverage"

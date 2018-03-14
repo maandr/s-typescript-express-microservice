@@ -29,7 +29,7 @@ yarn test --watch
 yarn test:coverage
 
 # Runs the project tests and sends the reports to coveralls
-yarn coverage
+yarn publish-coverage
 
 # Build the project
 yarn build

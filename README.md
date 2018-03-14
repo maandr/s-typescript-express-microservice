@@ -81,7 +81,7 @@ yarn docker-push
 
 ### Code coverage
 
-In order to send code-coverage reports after local coverage runs to [coverall.io](https://coverall.io), a `.coveralls.yml` file needs to be created within the root directory of the project. In this file the access token for the coveralls repository must be specified. The token can be obtained from [coverall.io](https://coverall.io) website.
+In order to send code-coverage reports after local `publish-coverage` runs to [coverall.io](https://coverall.io), a `.coveralls.yml` file needs to be created within the root directory of the project. In this file the access token for the coveralls repository must be specified. The token can be obtained from [coverall.io](https://coverall.io) website.
 
 ```yml
 repo_token: <your_repo_token>

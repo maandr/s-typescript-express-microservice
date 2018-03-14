@@ -21,7 +21,7 @@
     "start:dev": "cross-env NODE_ENV=development node ./dist/src/main.js",
     "test": "cross-env NODE_ENV=test npx mocha",
     "test:coverage": "cross-env NODE_ENV=test nyc --reporter=text npx mocha",
-    "publish-coverage": "cross-env NODE_ENV=test nyc report --reporter=text-lcov npx mocha | coveralls",
+    "publish-coverage": "nyc report --reporter=text-lcov | coveralls",
     "docker-build": "./scripts/docker-build.sh",
     "docker-up": "./scripts/docker-run.sh -d -p 3000:3000",
     "docker-down": "./scripts/docker-remove.sh -fv",

@@ -1,10 +1,9 @@
 import { Controller, Get, HttpCode } from "routing-controllers"
 
-@Controller("/health")
+@Controller()
 export class HealthController {
 
-    @HttpCode(200)
-    @Get("/")
+    @Get("/health")
     getHealth() {
         return "OK"
     }

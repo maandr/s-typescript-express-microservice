@@ -10,7 +10,7 @@ export class Application {
     constructor() {
         this.express = new ExpressConfig()
         //const port = config.get("express.port")// TODO: fix
-        const port = 8080
+        const port = 3000
         this.server = this.express.app.listen(port, (error: any) => {
             if(error) {
                 logger.error(`-----------------`)
@@ -20,7 +20,7 @@ export class Application {
             } else {
                 logger.info(`-----------------`)
                 logger.info(`Server started!`)
-                logger.info(`Express: http://localhost:${port}`)
+                logger.info(`Express: http://localhost:${port}/api`)
                 logger.info(`-----------------`)
             }
         })

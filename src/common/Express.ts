@@ -3,6 +3,7 @@ import * as express from "express"
 import * as bodyParser from "body-parser"
 import { useExpressServer } from "routing-controllers";
 import { logger } from "./Logger"
+import { HealthController } from "../controllers/HealthController"
 
 export class ExpressConfig {
 
@@ -15,10 +16,15 @@ export class ExpressConfig {
     }
 
     setupControllers() {
-        const controllerPath = path.resolve("dist", "controllers");
-        logger.info(`looking for controllers in ${controllerPath}`)
+        const controllers: Array<any> = [
+            HealthController
+        ]
         useExpressServer(this.app, {
-            controllers: [ controllerPath ]
+            routePrefix: "/api",
+            controllers: controllers
+        })
+        controllers.forEach(controller => {
+            logger.info(`mounted controller: ${controller.name}`)
         })
     }
 }

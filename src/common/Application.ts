@@ -1,6 +1,6 @@
 import { ExpressConfig } from "./Express"
 import { logger } from "./Logger"
-//import * as config from "../config"
+import * as config from "config"
 
 export class Application {
 
@@ -9,8 +9,7 @@ export class Application {
 
     constructor() {
         this.express = new ExpressConfig()
-        //const port = config.get("express.port")// TODO: fix
-        const port = 3000
+        const port = config.get("express.port")
         this.server = this.express.app.listen(port, (error: any) => {
             if(error) {
                 logger.error(`-----------------`)

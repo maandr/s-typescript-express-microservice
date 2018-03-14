@@ -25,6 +25,12 @@ yarn test
 # Runs the project tests in watch-mode
 yarn test --watch
 
+# Runs the project tests with coverage report
+yarn test:coverage
+
+# Runs the project tests and sends the reports to coveralls
+yarn coverage
+
 # Build the project
 yarn build
 
@@ -33,6 +39,42 @@ yarn start
 
 # Start the project in development mode
 yarn start:dev
+```
+
+## Docker utilities
+
+### Build the project as docker-image
+
+The script infers the image name from `name` in `package.json`.
+It tags the image with the `version` that is configured in `package.json`.
+
+```bash
+yarn docker-build
+```
+
+### Start the project as docker-container
+
+The script names the container with the `docker-container-name` that is configured in `package.json`.
+
+```bash
+yarn docker-up
+```
+
+### Stop and remove the project docker-container
+
+The script takes the container name  from the `docker-container-name` that is configured in `package.json`.
+
+```bash
+yarn docker-down
+```
+
+### Pushes the project docker-image
+
+The script pushes the docker-image either to the `docker-registry` which is configured in `package.json` or to DockerHub as the `docker-user` that is configured in `package.json`.
+It will tag the image with without version, with the `version` configured in `package.json` and with **latest**.
+
+```bash
+yarn docker-push
 ```
 
 ## Further Setup

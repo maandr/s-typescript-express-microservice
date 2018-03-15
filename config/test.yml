@@ -1,4 +1,6 @@
 express:
   port: 9909
+mysql:
+  database: "service_name_test"
 logging:
   level: "WARN"

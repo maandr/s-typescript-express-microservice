@@ -18,6 +18,7 @@
     "build": "npx tsc",
     "prestart": "yarn build",
     "start": "cross-env NODE_ENV=production node ./dist/src/main.js",
+    "prestart:dev": "yarn mysql-up && yarn build",
     "start:dev": "cross-env NODE_ENV=development node ./dist/src/main.js",
     "test": "cross-env NODE_ENV=test npx mocha",
     "test:coverage": "cross-env NODE_ENV=test nyc --reporter=text npx mocha",
@@ -25,7 +26,9 @@
     "docker-build": "./scripts/docker-build.sh",
     "docker-up": "./scripts/docker-run.sh -d -p 9001:9001",
     "docker-down": "./scripts/docker-remove.sh -fv",
-    "docker-push": "./scripts/docker-push.sh"
+    "docker-push": "./scripts/docker-push.sh",
+    "mysql-up": "./scripts/mysql-up.sh",
+    "mysql-down": "./scripts/mysql-down.sh"
   },
   "dependencies": {
     "body-parser": "^1.18.2",

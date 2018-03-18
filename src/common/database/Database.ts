@@ -11,7 +11,7 @@ export class Database implements IDatabase {
 
     constructor(config: IDatabaseConfig) {
         this.connection = MySQL.createConnection({
-            host: config.hostnameAndPort,
+            host: config.hostname,
             user: config.username,
             password: config.password,
             database: config.database
@@ -19,10 +19,10 @@ export class Database implements IDatabase {
         this.connection.connect()
     }
 
-    public async query(query: MySQL.Query): Promise<any> {
+    public async query(statement: string): Promise<any> {
         return new Promise<any>((resolve: any, reject: any) => {
-            logger.info("SQL: " + query.sql)
-            this.connection.query(query, (error: MySQL.MysqlError, results?: any, fields?: MySQL.FieldInfo[]) => {
+            logger.info("SQL: " + statement)
+            this.connection.query(statement, (error: MySQL.MysqlError, results?: any, fields?: MySQL.FieldInfo[]) => {
                 if(error) {
                     logger.error(error.message)
                     reject(error)

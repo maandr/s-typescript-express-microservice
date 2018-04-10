@@ -26,9 +26,7 @@
     "docker-build": "./scripts/docker-build.sh",
     "docker-up": "./scripts/docker-run.sh -d -p 9001:9001",
     "docker-down": "./scripts/docker-remove.sh -fv",
-    "docker-push": "./scripts/docker-push.sh",
-    "mysql-up": "./scripts/mysql-up.sh",
-    "mysql-down": "./scripts/mysql-down.sh"
+    "docker-push": "./scripts/docker-push.sh"
   },
   "dependencies": {
     "body-parser": "^1.18.2",

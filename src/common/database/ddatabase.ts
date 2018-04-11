@@ -1,5 +1,5 @@
 import * as MySQL from 'mysql'
-import { logger } from '../logging/Logger'
+import { logger } from '../logging/logger'
 import { DatabaseConfigProvider, IDatabaseConfig } from './database.config'
 
 export interface IDatabase {

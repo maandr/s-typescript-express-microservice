@@ -6,19 +6,19 @@ import { logger } from './logging/logger'
 import { HealthController } from '../controllers/health.controller'
 
 export class ExpressApplication {
-  constructor(public app: express.Express = express()) {
-    this.app.use(bodyParser.json())
-    this.setupControllers()
-  }
+    constructor(public app: express.Express = express()) {
+        this.app.use(bodyParser.json())
+        this.setupControllers()
+    }
 
-  setupControllers() {
-    const controllers: Array<any> = [HealthController]
-    useExpressServer(this.app, {
-      routePrefix: '/api',
-      controllers: controllers
-    })
-    controllers.forEach(controller => {
-      logger.info(`mounted controller: ${controller.name}`)
-    })
-  }
+    setupControllers() {
+        const controllers: Array<any> = [HealthController]
+        useExpressServer(this.app, {
+            routePrefix: '/api',
+            controllers: controllers
+        })
+        controllers.forEach(controller => {
+            logger.info(`mounted controller: ${controller.name}`)
+        })
+    }
 }

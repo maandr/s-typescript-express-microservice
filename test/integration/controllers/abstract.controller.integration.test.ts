@@ -1,9 +1,8 @@
-import * as app from "../../../src/main"
-import * as supertest from "supertest"
-import { logger } from "../../../src/common/logging/Logger"
+import * as app from '../../../src/main'
+import * as supertest from 'supertest'
+import { logger } from '../../../src/common/logging/Logger'
 
 export abstract class AbstractControllerIntegrationTest {
-
     private static server: any = null
     private static apiClient: any = null
 
@@ -12,12 +11,14 @@ export abstract class AbstractControllerIntegrationTest {
 
     protected static before() {
         AbstractControllerIntegrationTest.server = app.default.express.app.listen(() => {})
-        AbstractControllerIntegrationTest.apiClient = supertest.agent(AbstractControllerIntegrationTest.server)
-        logger.debug("Test server successfully started.")
+        AbstractControllerIntegrationTest.apiClient = supertest.agent(
+            AbstractControllerIntegrationTest.server
+        )
+        logger.debug('Test server successfully started.')
     }
 
     protected static after() {
         AbstractControllerIntegrationTest.server.close()
-        logger.debug("Test server successfully teared down.")
+        logger.debug('Test server successfully teared down.')
     }
 }

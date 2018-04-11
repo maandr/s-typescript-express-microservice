@@ -1,13 +1,11 @@
-import { AbstractControllerIntegrationTest } from "./abstract.controller.integration.test"
-import { suite, test } from "mocha-typescript"
-import { expect } from "chai"
+import { AbstractControllerIntegrationTest } from './abstract.controller.integration.test'
+import { suite, test } from 'mocha-typescript'
+import { expect } from 'chai'
 
-@suite("HealthController")
+@suite('HealthController')
 class HealthControllerIntegrationTest extends AbstractControllerIntegrationTest {
-
-    @test("GET /api/health")
+    @test('GET /api/health')
     should_response_ok() {
-        this.apiClient.get("/api/health")
-            .expect(200)
+        this.apiClient.get('/api/health').expect(200)
     }
 }

@@ -1,7 +1,7 @@
 express:
   port: 9909
 mysql:
-  username: "lolamarellagoodies_test"
-  database: "lolamarellagoodies_test"
+  username: "serviceuser_test"
+  database: "servicedb_test"
 logging:
   level: "WARN"

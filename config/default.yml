@@ -3,7 +3,7 @@ express:
 mysql:
   host: "localhost"
   port: 3306
-  username: "lolamarellagoodies"
-  database: "lolamarellagoodies"
+  username: "serviceuser"
+  database: "servicedb"
 logging:
   level: "DEBUG"

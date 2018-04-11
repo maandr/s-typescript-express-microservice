@@ -1,16 +1,15 @@
-import * as path from "path"
-import * as express from "express"
-import * as bodyParser from "body-parser"
-import { useExpressServer } from "routing-controllers";
-import { logger } from "./logging/Logger"
-import { HealthController } from "../controllers/HealthController"
+import * as path from 'path'
+import * as express from 'express'
+import * as bodyParser from 'body-parser'
+import { useExpressServer } from 'routing-controllers';
+import { logger } from './logging/logger'
+import { HealthController } from '../controllers/health.controller'
 
-export class ExpressConfig {
+export class ExpressApplication {
 
-    app: express.Express
-
-    constructor() {
-        this.app = express()
+    constructor(
+        public app: express.Express = express()
+    ) {
         this.app.use(bodyParser.json());
         this.setupControllers()
     }
@@ -20,7 +19,7 @@ export class ExpressConfig {
             HealthController
         ]
         useExpressServer(this.app, {
-            routePrefix: "/api",
+            routePrefix: '/api',
             controllers: controllers
         })
         controllers.forEach(controller => {

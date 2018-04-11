@@ -1,4 +1,4 @@
-import { AbstractControllerIntegrationTest } from "./AbstractControllerIntegrationTest"
+import { AbstractControllerIntegrationTest } from "./abstract.controller.integration.test"
 import { suite, test } from "mocha-typescript"
 import { expect } from "chai"
 

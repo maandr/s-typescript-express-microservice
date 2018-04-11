@@ -1,28 +1,43 @@
-import { ExpressConfig } from "./Express"
-import { logger } from "./logging/Logger"
-import * as config from "config"
+import { ExpressApplication } from './express'
+import { ConfigService } from '../services/config.service'
+import { logger } from './logging/logger'
+import * as config from 'config'
 
 export class Application {
 
+    port: number
     server: any
-    express: ExpressConfig
 
-    constructor() {
-        this.express = new ExpressConfig()
-        const port = config.get("express.port")
-        this.server = this.express.app.listen(port, (error: any) => {
+    constructor(
+        public express: ExpressApplication = new ExpressApplication(),
+        private configService: ConfigService = new ConfigService()
+    ) {}
+
+    configure(): Application {
+        logger.info(`configuring application..`)
+        this.port = parseInt(this.configService.get('express.port'))
+        return this
+    }
+
+    run(): Application {
+        this.server = this.express.app.listen(this.port, (error: any) => { 
             if(error) {
-                logger.error(`-----------------`)
-                logger.error(`Application startup failed!`)
-                logger.error(`Reason: ${error}`)
-                logger.error(`-----------------`)
+                logger.error(`
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                    Application startup failed.
+                    Reason: ${error}
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                `)
             } else {
-                logger.info(`-----------------`)
-                logger.info(`Server started!`)
-                logger.info(`Express: http://localhost:${port}/api`)
-                logger.info(`-----------------`)
+                logger.info(`
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                    Server started!
+                    Express: http://localhost:${this.port}/api
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                `)
             }
         })
+        return this
     }
 }
 

@@ -3,6 +3,7 @@ dist
 coverage
 .nyc_output
 
+*.env
 .coveralls.yml
 
 yarn-error.log

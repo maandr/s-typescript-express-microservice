@@ -1,17 +1,21 @@
 import * as applicationConfig from "config"
-import { logger } from "../logging/Logger"
+import { logger, ConsoleLogger } from "../logging/Logger"
 import * as MySQL from "mysql"
-import { IDatabase } from "./IDatabase"
-import { IDatabaseConfig } from "./IDatabaseConfig"
-import { DatabaseConfigProvider } from "./DatabaseConfigProvider"
+import { DatabaseConfigProvider, IDatabaseConfig } from "./database.config"
+
+export interface IDatabase {
+    query(statement: string): Promise<any>
+}
 
 export class Database implements IDatabase {
 
-    private connection: MySQL.Connection;
+    private connection: MySQL.Connection
 
-    constructor(config: IDatabaseConfig) {
+    constructor(
+        private config: IDatabaseConfig
+    ) {
         this.connection = MySQL.createConnection({
-            host: config.hostname,
+            host: config.host,
             user: config.username,
             password: config.password,
             database: config.database

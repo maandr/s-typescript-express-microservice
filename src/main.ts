@@ -1,6 +1,9 @@
-"use strict"
+'use strict'
 
-import "reflect-metadata";
-import { Application } from "./common/Application"
+import 'dotenv/config'
+import 'reflect-metadata'
+import { Application } from './common/application'
 
 export default new Application()
+    .configure()
+    .run()

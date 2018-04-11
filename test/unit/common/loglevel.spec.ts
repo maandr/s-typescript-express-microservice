@@ -1,6 +1,6 @@
 import { suite, test } from "mocha-typescript"
 import { expect } from "chai"
-import { LogLevel } from "../../../src/common/logging/LogLevel"
+import { LogLevel } from "../../../src/common/logging/logger"
 
 @suite("LogLevel")
 class LogLevelUnitTest {

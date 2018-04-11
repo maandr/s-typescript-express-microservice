@@ -1,5 +1,5 @@
 import { ExpressApplication } from './express'
-import { ConfigService } from '../services/config.service'
+import { ApplicationConfig } from './config/config'
 import { logger } from './logging/logger'
 import * as config from 'config'
 
@@ -9,13 +9,12 @@ export class Application {
     server: any
 
     constructor(
-        public express: ExpressApplication = new ExpressApplication(),
-        private configService: ConfigService = new ConfigService()
+        public express: ExpressApplication = new ExpressApplication()
     ) {}
 
     configure(): Application {
         logger.info(`configuring application..`)
-        this.port = parseInt(this.configService.get('express.port'))
+        this.port = parseInt(ApplicationConfig.get('express.port'))
         return this
     }
 

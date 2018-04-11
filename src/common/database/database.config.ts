@@ -1,6 +1,5 @@
 import { logger } from '../logging/logger'
-import { ConfigurationError } from '../../services/config.service'
-import * as applicationConfig from 'config'
+import { ConfigurationError, ApplicationConfig } from '../config/config'
 
 export interface IDatabaseConfig {
     host: string
@@ -28,8 +27,8 @@ export class DatabaseConfigProvider {
         if(process.env.MYSQL_HOST) {
             return process.env.MYSQL_HOST
         }
-        if(applicationConfig.has(YML_MYSQL_HOST)) {
-            return applicationConfig.get(YML_MYSQL_HOST)
+        if(ApplicationConfig.has(YML_MYSQL_HOST)) {
+            return ApplicationConfig.get(YML_MYSQL_HOST)
         }
         logger.warning(`
             Mysql host is not configured. Falling back to default '${MYSQL_DEFAULT_HOST}'.
@@ -43,8 +42,8 @@ export class DatabaseConfigProvider {
         if(parseInt(process.env.MYSQL_PORT)) {
             return process.env.MYSQL_PORT
         }
-        if(applicationConfig.has(YML_MYSQL_PORT) && parseInt(applicationConfig.get(YML_MYSQL_PORT))) {
-            return applicationConfig.get(YML_MYSQL_PORT)
+        if(ApplicationConfig.has(YML_MYSQL_PORT) && parseInt(ApplicationConfig.get(YML_MYSQL_PORT))) {
+            return ApplicationConfig.get(YML_MYSQL_PORT)
         }
         logger.warning(`
             Mysql port is not configured. Falling back to default '${MYSQL_DEFAULT_PORT}'.
@@ -58,8 +57,8 @@ export class DatabaseConfigProvider {
         if(process.env.MYSQL_USERNAME) {
             return process.env.MYSQL_USERNAME
         }
-        if(applicationConfig.has(YML_MYSQL_USERNAME)) {
-            return applicationConfig.get(YML_MYSQL_USERNAME)
+        if(ApplicationConfig.has(YML_MYSQL_USERNAME)) {
+            return ApplicationConfig.get(YML_MYSQL_USERNAME)
         }
         throw new ConfigurationError(`
             Mysql username is not configured.
@@ -72,8 +71,8 @@ export class DatabaseConfigProvider {
         if(process.env.MYSQL_PASSWORD) {
             return process.env.MYSQL_PASSWORD
         }
-        if(applicationConfig.has(YML_MYSQL_PASSWORD)) {
-            return applicationConfig.get(YML_MYSQL_PASSWORD)
+        if(ApplicationConfig.has(YML_MYSQL_PASSWORD)) {
+            return ApplicationConfig.get(YML_MYSQL_PASSWORD)
         }
         throw new ConfigurationError(`
             Mysql password is not configured.
@@ -86,8 +85,8 @@ export class DatabaseConfigProvider {
         if(process.env.MYSQL_DATABASE) {
             return process.env.MYSQL_DATABASE
         }
-        if(applicationConfig.has(YML_MYSQL_DATABASE)) {
-            return applicationConfig.get(YML_MYSQL_DATABASE)
+        if(ApplicationConfig.has(YML_MYSQL_DATABASE)) {
+            return ApplicationConfig.get(YML_MYSQL_DATABASE)
         }
         throw new ConfigurationError(`
             Mysql database is not configured.

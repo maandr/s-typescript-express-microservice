@@ -1,4 +1,4 @@
-import { ConfigService } from "../../services/config.service";
+import { ApplicationConfig } from '../config/config'
 
 export interface ILogger {
     
@@ -7,12 +7,11 @@ export interface ILogger {
 export class ConsoleLogger {
 
     constructor(
-        private configService: ConfigService = new ConfigService(),
         private level: LogLevel = null
     ) {
         this.level = (level) 
             ? level
-            : new LogLevel(this.configService.get("logging.level"))
+            : new LogLevel(ApplicationConfig.get('logging.level'))
     }
 
     info(msg: string): void {
@@ -34,10 +33,10 @@ export class ConsoleLogger {
 
 export class LogLevel {
 
-    static DEBUG: string = "DEBUG"
-    static INFO: string = "INFO"
-    static WARNING: string = "WARNING"
-    static ERROR: string = "ERROR"
+    static DEBUG: string = 'DEBUG'
+    static INFO: string = 'INFO'
+    static WARNING: string = 'WARNING'
+    static ERROR: string = 'ERROR'
 
     debug: boolean = false
     info: boolean = false

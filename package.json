@@ -58,6 +58,7 @@
     "mocha-typescript": "^1.1.12",
     "mysql-migrations": "^1.0.4",
     "nyc": "^11.6.0",
+    "prettier": "^1.11.1",
     "rimraf": "^2.6.2",
     "supertest": "^3.0.0",
     "ts-node": "^5.0.1",

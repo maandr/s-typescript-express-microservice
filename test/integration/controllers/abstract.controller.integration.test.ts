@@ -1,6 +1,6 @@
 import * as app from '../../../src/main'
 import * as supertest from 'supertest'
-import { logger } from '../../../src/common/logging/Logger'
+import { logger } from '../../../src/common/logging/logger'
 
 export abstract class AbstractControllerIntegrationTest {
     private static server: any = null

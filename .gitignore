@@ -1,11 +1,10 @@
 node_modules
 dist
 coverage
-.nyc_output
 
 *.env
+*.log
+
+.nyc_output
 .coveralls.yml
-
-yarn-error.log
-
 .vscode

@@ -1,60 +1,26 @@
 import { ApplicationConfig } from '../config/config'
+import * as winston from 'winston'
 
-export interface ILogger {
-    
+let transporters: winston.TransportInstance[] = [
+  new winston.transports.Console({
+    timestamp: true,
+    level: ApplicationConfig.get('logging.level').toLocaleLowerCase()
+  })
+]
+
+if (process.env.NODE_ENV === 'production') {
+  transporters.push(
+    new winston.transports.File({
+      level: ApplicationConfig.get('logging.level').toLocaleLowerCase(),
+      filename: 'application.log',
+      zippedArchive: true,
+      datePattern: 'YYYY-MM-DD-HH',
+      maxSize: '20m',
+      maxFiles: '14d'
+    })
+  )
 }
 
-export class ConsoleLogger {
-
-    constructor(
-        private level: LogLevel = null
-    ) {
-        this.level = (level) 
-            ? level
-            : new LogLevel(ApplicationConfig.get('logging.level'))
-    }
-
-    info(msg: string): void {
-        if(this.level.info) console.info(msg)
-    }
-
-    warning(msg: string): void {
-        if(this.level.warning) console.warn(msg)
-    }
-
-    error(msg: string): void {
-        if(this.level.error) console.error(msg)
-    }
-
-    debug(msg: string): void {
-        if(this.level.debug) console.debug(msg)
-    }
-}
-
-export class LogLevel {
-
-    static DEBUG: string = 'DEBUG'
-    static INFO: string = 'INFO'
-    static WARNING: string = 'WARNING'
-    static ERROR: string = 'ERROR'
-
-    debug: boolean = false
-    info: boolean = false
-    warning: boolean = false
-    error: boolean = false
-
-    constructor(level: string = LogLevel.INFO) {
-        switch(level) {
-            case LogLevel.DEBUG:
-                this.debug = true
-            case LogLevel.INFO:
-                this.info = true
-            case LogLevel.WARNING:
-                this.warning = true
-            case LogLevel.ERROR:
-                this.error = true
-        }
-    }
-}
-
-export const logger = new ConsoleLogger()
+export const logger = new winston.Logger({
+  transports: transporters
+})

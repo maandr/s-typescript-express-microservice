@@ -6,4 +6,4 @@ mysql:
   username: "serviceuser"
   database: "servicedb"
 logging:
-  level: "DEBUG"
+  level: "debug"

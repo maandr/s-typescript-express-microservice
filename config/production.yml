@@ -1,4 +1,4 @@
 express:
   port: 9001
 logging:
-  level: "WARN"
+  level: "debug"
